@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombrerest: MyString
+  latitudrest: 1.5
+  longitudrest: 1.5
+  tiporest: MyString
+  calificacionrest: MyString
+  preciorest: MyString
+
+two:
+  nombrerest: MyString
+  latitudrest: 1.5
+  longitudrest: 1.5
+  tiporest: MyString
+  calificacionrest: MyString
+  preciorest: MyString

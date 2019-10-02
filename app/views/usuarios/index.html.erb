@@ -5,11 +5,11 @@
 <table>
   <thead>
     <tr>
-      <th>Usuario</th>
+      <th>Correousuario</th>
       <th>Nombreusuario</th>
       <th>Apellidousuario</th>
-      <th>Correousuario</th>
       <th>Contrasenausuario</th>
+      <th>Tipousuario</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,11 +17,11 @@
   <tbody>
     <% @usuarios.each do |usuario| %>
       <tr>
-        <td><%= usuario.usuario %></td>
+        <td><%= usuario.correousuario %></td>
         <td><%= usuario.nombreusuario %></td>
         <td><%= usuario.apellidousuario %></td>
-        <td><%= usuario.correousuario %></td>
         <td><%= usuario.contrasenausuario %></td>
+        <td><%= usuario.tipousuario %></td>
         <td><%= link_to 'Show', usuario %></td>
         <td><%= link_to 'Edit', edit_usuario_path(usuario) %></td>
         <td><%= link_to 'Destroy', usuario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
