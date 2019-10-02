@@ -5,10 +5,7 @@ class UsuariosController < ApplicationController
   # GET /usuarios.json
   def index
     @usuarios = Usuario.all
-    respond_to do |format|
-      format.html { @usuarios }
-      format.json { render json: @usuarios }
-    end
+    render json: @usuarios
   end
 
   # GET /usuarios/1
