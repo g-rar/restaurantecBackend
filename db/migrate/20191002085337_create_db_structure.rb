@@ -1,4 +1,4 @@
-class CreateDatabaseStructure < ActiveRecord::Migration[6.0]
+class CreateDbStructure < ActiveRecord::Migration[6.0]
   def change
     create_table "calificaciones", primary_key: "idcalificacion", id: :integer, limit: 2, default: nil, force: :cascade do |t|
       t.string "correousuario", limit: 25
