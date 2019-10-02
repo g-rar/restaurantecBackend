@@ -5,11 +5,19 @@ class ComentariosController < ApplicationController
   # GET /comentarios.json
   def index
     @comentarios = Comentario.all
+    respond_to do |format|
+      format.html {@comentarios}
+      format.json {render json: {comentarios: @comentarios}}
+    end
   end
 
   # GET /comentarios/1
   # GET /comentarios/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json {render json: @comentario}
+    end
   end
 
   # GET /comentarios/new

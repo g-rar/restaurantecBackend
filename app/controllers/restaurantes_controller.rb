@@ -5,11 +5,19 @@ class RestaurantesController < ApplicationController
   # GET /restaurantes.json
   def index
     @restaurantes = Restaurante.all
+    respond_to do |format|
+      format.html {@restaurantes}
+      format.json {render json: {restaurantes: @restaurantes}}
+    end
   end
 
   # GET /restaurantes/1
   # GET /restaurantes/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json {render json: @restaurante}
+    end
   end
 
   # GET /restaurantes/new

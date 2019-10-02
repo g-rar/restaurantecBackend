@@ -5,11 +5,19 @@ class TelefonosController < ApplicationController
   # GET /telefonos.json
   def index
     @telefonos = Telefono.all
+    respond_to do |format|
+      format.html {@telefonos}
+      format.json {render json: {telefonos: @telefonos}}
+    end
   end
 
   # GET /telefonos/1
   # GET /telefonos/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json {render json: @telefono}
+    end
   end
 
   # GET /telefonos/new

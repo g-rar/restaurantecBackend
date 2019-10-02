@@ -7,13 +7,17 @@ class UsuariosController < ApplicationController
     @usuarios = Usuario.all
     respond_to do |format|
       format.html { @usuarios }
-      format.json { render json: @usuarios }
+      format.json { render json: {usuarios: @usuarios} }
     end
   end
 
   # GET /usuarios/1
   # GET /usuarios/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json {render json: @usuario}
+    end
   end
 
   # GET /usuarios/new

@@ -5,11 +5,19 @@ class CalificacionesController < ApplicationController
   # GET /calificaciones.json
   def index
     @calificaciones = Calificacione.all
+    respond_to do |format|
+      format.html {@calificaciones}
+      format.json {render json: {calificaciones: @calificaciones}}
+    end
   end
 
   # GET /calificaciones/1
   # GET /calificaciones/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json {render json: @comentario}
+    end
   end
 
   # GET /calificaciones/new
