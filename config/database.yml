@@ -17,9 +17,9 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  database: tp1Restaurantes
+  database: db_restaurantec
   user: postgres
-  password: 3312
+  password: Dreamcarmesi-73-
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
