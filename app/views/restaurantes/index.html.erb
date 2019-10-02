@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Restaurantes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombrerest</th>
+      <th>Latitudrest</th>
+      <th>Longitudrest</th>
+      <th>Tiporest</th>
+      <th>Calificacionrest</th>
+      <th>Preciorest</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @restaurantes.each do |restaurante| %>
+      <tr>
+        <td><%= restaurante.nombrerest %></td>
+        <td><%= restaurante.latitudrest %></td>
+        <td><%= restaurante.longitudrest %></td>
+        <td><%= restaurante.tiporest %></td>
+        <td><%= restaurante.calificacionrest %></td>
+        <td><%= restaurante.preciorest %></td>
+        <td><%= link_to 'Show', restaurante %></td>
+        <td><%= link_to 'Edit', edit_restaurante_path(restaurante) %></td>
+        <td><%= link_to 'Destroy', restaurante, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Restaurante', new_restaurante_path %>
+<br>
+<br>
+<%= link_to 'Agregar telefono', telefonos_path %>
+<br>
+<br>
+<%= link_to 'Inicio', welcome_index_path %>
