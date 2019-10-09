@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_10_08_032215) do
   create_table "comentarios", primary_key: "idcomentario", id: :integer, limit: 2, default: nil, force: :cascade do |t|
     t.string "correousuario", limit: 25
     t.string "restaurante", limit: 20
-    t.string "comentario", limit: 150
+    t.string "cuerpo_comentario", limit: 150
     t.date "fecha"
   end
 
@@ -46,11 +46,7 @@ ActiveRecord::Schema.define(version: 2019_10_08_032215) do
     t.string "tiporest", limit: 15, null: false
     t.float "calificacionrest"
     t.string "preciorest", limit: 3
-  end
-
-  create_table "telefonos", primary_key: "restaurante", id: :string, limit: 20, force: :cascade do |t|
     t.integer "numtelefono"
-    t.string "tipotel", limit: 10
   end
 
   create_table "usuarios", primary_key: "idusuario", id: :integer, limit: 2, default: nil, force: :cascade do |t|
@@ -66,5 +62,4 @@ ActiveRecord::Schema.define(version: 2019_10_08_032215) do
   add_foreign_key "calificaciones", "usuarios", column: "correousuario", primary_key: "correousuario", name: "calificaciones_correousuario_fkey"
   add_foreign_key "comentarios", "restaurantes", column: "restaurante", primary_key: "nombrerest", name: "comentarios_restaurante_fkey"
   add_foreign_key "comentarios", "usuarios", column: "correousuario", primary_key: "correousuario", name: "comentarios_correousuario_fkey"
-  add_foreign_key "telefonos", "restaurantes", column: "restaurante", primary_key: "nombrerest", name: "telefonos_restaurante_fkey"
 end

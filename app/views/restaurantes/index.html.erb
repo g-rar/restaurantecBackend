@@ -11,6 +11,7 @@
       <th>Tiporest</th>
       <th>Calificacionrest</th>
       <th>Preciorest</th>
+      <th>NumTelefono</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,6 +25,7 @@
         <td><%= restaurante.tiporest %></td>
         <td><%= restaurante.calificacionrest %></td>
         <td><%= restaurante.preciorest %></td>
+        <td><%= restaurante.numtelefono %></td>
         <td><%= link_to 'Show', restaurante %></td>
         <td><%= link_to 'Edit', edit_restaurante_path(restaurante) %></td>
         <td><%= link_to 'Destroy', restaurante, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -35,9 +37,6 @@
 <br>
 
 <%= link_to 'New Restaurante', new_restaurante_path %>
-<br>
-<br>
-<%= link_to 'Agregar telefono', telefonos_path %>
 <br>
 <br>
 <%= link_to 'Inicio', welcome_index_path %>

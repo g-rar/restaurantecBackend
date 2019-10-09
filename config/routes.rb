@@ -6,8 +6,6 @@ Rails.application.routes.draw do
 
   resources :comentarios
   resources :calificaciones
-  resources :calificacions
-  resources :telefonos
   resources :usuarios
   resources :restaurantes
 

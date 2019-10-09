@@ -5,5 +5,8 @@ class ModAutoincrement < ActiveRecord::Migration[6.0]
 
     execute 'ALTER TABLE usuarios drop idusuario'
     execute 'ALTER TABLE usuarios add idusuario smallint NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY'
+
+    execute 'ALTER TABLE calificaciones drop idcalificacion'
+    execute 'ALTER TABLE calificaciones add idcalificacion smallint NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY'
   end
 end

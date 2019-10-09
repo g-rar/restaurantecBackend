@@ -7,16 +7,23 @@ class CalificacionesController < ApplicationController
     @calificaciones = Calificacione.all
     respond_to do |format|
       format.html {@calificaciones}
-      format.json {render json: {calificaciones: @calificaciones}}
+      format.json {render json: {calificaciones: @calificaciones},status: :ok}
     end
   end
 
   # GET /calificaciones/1
   # GET /calificaciones/1.json
   def show
-    respond_to do |format|
-      format.html
-      format.json {render json: @comentario}
+    if @calificacione
+      respond_to do |format|
+        format.html
+        format.json {render json: @calificacione, status: :ok}
+      end
+    else
+      respond_to do |format|
+        format.html {redirect_to calificaciones_url}
+        format.json {render json: {message: "ERROR"},status: :not_found}
+      end
     end
   end
 
@@ -36,8 +43,17 @@ class CalificacionesController < ApplicationController
 
     respond_to do |format|
       if @calificacione.save
-        format.html { redirect_to @calificacione, notice: 'Calificacione was successfully created.' }
-        format.json { render :show, status: :created, location: @calificacione }
+        sum = 0
+        count = 0
+        Calificacione.all.each do |cal|
+          if cal.restaurante == @calificacione.restaurante
+            sum += cal.calificacion
+            count += 1
+          end
+        end
+        Restaurante.find(params[:restaurante]).update(calificacionrest: (sum/count))
+        format.html { redirect_to @calificacione, notice: 'Calificacion creada con exito.' }
+        format.json { render json: {status: :created, location: @calificacione},status: :ok }
       else
         format.html { render :new }
         format.json { render json: @calificacione.errors, status: :unprocessable_entity }
@@ -50,8 +66,8 @@ class CalificacionesController < ApplicationController
   def update
     respond_to do |format|
       if @calificacione.update(calificacione_params)
-        format.html { redirect_to @calificacione, notice: 'Calificacione was successfully updated.' }
-        format.json { render :show, status: :ok, location: @calificacione }
+        format.html { redirect_to @calificacione, notice: 'Calificacione creado con exito.' }
+        format.json { render json:{ status: :ok, location: @calificacione }, status: :ok}
       else
         format.html { render :edit }
         format.json { render json: @calificacione.errors, status: :unprocessable_entity }
@@ -62,10 +78,17 @@ class CalificacionesController < ApplicationController
   # DELETE /calificaciones/1
   # DELETE /calificaciones/1.json
   def destroy
-    @calificacione.destroy
-    respond_to do |format|
-      format.html { redirect_to calificaciones_url, notice: 'Calificacione was successfully destroyed.' }
-      format.json { head :no_content }
+    if @calificacione
+      @calificacione.destroy
+      respond_to do |format|
+        format.html { redirect_to calificaciones_url, notice: 'Calificacione destruido con exito.' }
+        format.json { render json: {message: "SUCCESS"}, status: :ok}
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to calificaciones_url, notice: 'El restaurante no existe' }
+        format.json {render json: {message: "ERROR"}, status: :not_found}
+      end
     end
   end
 
