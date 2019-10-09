@@ -14,7 +14,7 @@ class RestaurantesController < ApplicationController
   # GET /restaurantes/1
   # GET /restaurantes/1.json
   def show
-    if @usuario
+    if @restaurante
       respond_to do |format|
         format.html
         format.json {render json: {status: "SUCCESS", restaurante: @restaurante}, status: :ok}
